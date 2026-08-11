@@ -1,19 +1,23 @@
-# cooking
+<p align="center">
+  <img src="assets/logo1.png" alt="Logo de Cooking App" width="200">
+</p>
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
 # CookingApp
 Application Flutter de recettes de cuisine
+
+# Lancement de l'application
+- Se positionner à la racine du projet
+- Taper la commande : `flutter run -d <id_appareil>`
+
+# Fonctionnalités implémentées
+- Listing des recettes de cuisine
+- Possibilité de filtrer les recettes selon leur origine ou encore leur catégorie
+- Afficher plus en détails une recette pour voir tous les ingrédients
+- Mettre tes recettes préférées en favoris
+- Ajouter tes propres recettes de façon personnalisée
+- Gestion du thème de l'application en mode clair ou sombre
+
+# Aperçu de l'application
+## Vue Desktop
+
+## Vues Mobile
