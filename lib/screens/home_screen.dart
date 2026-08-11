@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return recette.origine == RecipeOrigine.values[i];
       }
     }
-    return false;
+    return true;
   }
   
   // appliquer le filtre selon la categorie de la recette
@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return recette.categorie == RecipeCategorie.values[i];
       }
     }
-    return false;
+    return true;
   }
 
   // appliquer la recherche de recette
