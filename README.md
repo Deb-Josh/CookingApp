@@ -1,4 +1,5 @@
-<img src="assets/logo1.png" alt="Logo de Cooking App" >
+<img src="assets/logo1.png" alt="Logo de Cooking App" width="200">
+
 # CookingApp
 Application Flutter de recettes de cuisine
 
