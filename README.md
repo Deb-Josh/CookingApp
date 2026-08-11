@@ -1,6 +1,6 @@
-<center>
+<p align="center">
   <img src="assets/logo1.png" alt="Logo de Cooking App" width="200">
-</center>
+</p>
 
 # CookingApp
 Application Flutter de recettes de cuisine
