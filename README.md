@@ -18,3 +18,6 @@ Application Flutter de recettes de cuisine
 - Gestion du thème de l'application en mode clair ou sombre
 
 # Aperçu de l'application
+## Vue Desktop
+
+## Vues Mobile
