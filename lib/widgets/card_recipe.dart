@@ -38,10 +38,13 @@ class _CardRecipeState extends State<CardRecipe> {
             children: [
               Hero(
                 tag: recette.name,
-                child: Image.asset(
-                  "assets/logo1.png",
-                  height: MediaQueryController.h(context, 100),
-                  fit: BoxFit.fitHeight,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    recette.pathImage,
+                    height: MediaQueryController.h(context, 100),
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
               Expanded(

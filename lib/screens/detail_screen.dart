@@ -58,16 +58,22 @@ class _DetailScreenState extends State<DetailScreen> {
                 ),
                 Hero(
                   tag: recette.name,
-                  child: Image.asset("assets/logo1.png", height: MediaQueryController.h(context, 25))
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(recette.pathImage, height: MediaQueryController.h(context, 25))
+                  )
                 ),
-                IconButton(
-                  onPressed: () => setState(() => recette.favorite = !recette.favorite),
-                  icon: Icon(
-                    recette.favorite ? Icons.favorite : Icons.favorite_outline,
-                    color: Colors.red,
+                Positioned(
+                  bottom: 0,
+                  child: IconButton(
+                    onPressed: () => setState(() => recette.favorite = !recette.favorite),
+                    icon: Icon(
+                      recette.favorite ? Icons.favorite : Icons.favorite_outline,
+                      color: Colors.red,
+                    ),
+                    style: ButtonStyle(elevation: WidgetStatePropertyAll(10), backgroundColor: WidgetStatePropertyAll(Colors.black.withValues(alpha: 0.2))),
+                    tooltip: recette.favorite ? "Supprimer des favoris" : "Ajouter au favoris",
                   ),
-                  style: ButtonStyle(elevation: WidgetStatePropertyAll(10), backgroundColor: WidgetStatePropertyAll(Colors.white)),
-                  tooltip: recette.favorite ? "Supprimer des favoris" : "Ajouter au favoris",
                 ),
               ],
             ),
