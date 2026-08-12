@@ -64,14 +64,14 @@ class _DetailScreenState extends State<DetailScreen> {
                   )
                 ),
                 Positioned(
-                  bottom: 0,
+                  bottom: 2,
                   child: IconButton(
                     onPressed: () => setState(() => recette.favorite = !recette.favorite),
                     icon: Icon(
                       recette.favorite ? Icons.favorite : Icons.favorite_outline,
                       color: Colors.red,
                     ),
-                    style: ButtonStyle(elevation: WidgetStatePropertyAll(10), backgroundColor: WidgetStatePropertyAll(Colors.black.withValues(alpha: 0.2))),
+                    style: ButtonStyle(elevation: WidgetStatePropertyAll(10), backgroundColor: WidgetStatePropertyAll(Colors.white)),
                     tooltip: recette.favorite ? "Supprimer des favoris" : "Ajouter au favoris",
                   ),
                 ),
@@ -142,7 +142,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   border: Border.all(color: Colors.deepOrange, width: 1),
                                   borderRadius: BorderRadius.circular(5),
                                 ),
-                                child: Image.asset("assets/logo.png", fit: BoxFit.cover),
+                                child: Image.asset(ingredient.ingredient.ingredientImg, fit: BoxFit.cover),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,

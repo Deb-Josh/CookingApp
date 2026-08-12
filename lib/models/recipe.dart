@@ -86,15 +86,16 @@ class Recipe{
 
 // enumeration des origines des recettes
 enum RecipeOrigine {
-  afrique("plats africains"),
-  amerique("plats américains"),
-  asie("plats asiatiques"),
-  europe("plats européens"),
-  oceanie("plats d'océanie");
+  afrique("plats africains", "assets/logo2.png"),
+  amerique("plats américains", "assets/logo2.png"),
+  asie("plats asiatiques", "assets/logo2.png"),
+  europe("plats européens", "assets/logo2.png"),
+  oceanie("plats d'océanie", "assets/logo2.png");
 
   final String label;
+  final String origineImg;
 
-  const RecipeOrigine(this.label);
+  const RecipeOrigine(this.label, this.origineImg);
 }
 
 // Enumeration des categories de recette
