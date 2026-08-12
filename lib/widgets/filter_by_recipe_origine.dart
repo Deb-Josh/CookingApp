@@ -56,7 +56,7 @@ class _FilterByRecipeOrigineState extends State<FilterByRecipeOrigine> {
                       color: Colors.white.withAlpha(255),
                       borderRadius: BorderRadius.circular(10)
                     ),
-                    child: Image.asset("assets/logo2.png", fit: BoxFit.cover)
+                    child: Image.asset(origine.origineImg, fit: BoxFit.cover)
                   ),
                   Text(origine.label.capitalizeAll(), textAlign: TextAlign.center, style: TextStyle(letterSpacing: 1, fontSize: 12, fontWeight: filterOrigineState[origine.index] ? FontWeight.bold : null),),
                 ],

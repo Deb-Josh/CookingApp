@@ -55,9 +55,24 @@ class _CardRecipeState extends State<CardRecipe> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(recette.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                        Text(recette.categorie.label, style: TextStyle(fontSize: 14)),
-                        Text("${recette.ingredients.length} ingrédient(s)", style: TextStyle(fontStyle: FontStyle.italic, decoration: TextDecoration.underline))
+                        Text(
+                          recette.name,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)
+                        ),
+                        Text(
+                          recette.categorie.label,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontSize: 14)
+                        ),
+                        Text(
+                          "${recette.ingredients.length} ingrédient(s)",
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontStyle: FontStyle.italic, decoration: TextDecoration.underline)
+                        )
                       ],
                     ),
                     Column(

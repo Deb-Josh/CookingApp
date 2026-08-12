@@ -21,30 +21,36 @@ class _FilterByRecipeCategoryState extends State<FilterByRecipeCategory> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MediaQueryController.screenWidth(context) <= 450 ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceEvenly,
-      children: RecipeCategorie.values.map((category) =>
-        GestureDetector(
-          onTap: () => setState(() {
-            filterCategoryState[category.index] = !filterCategoryState[category.index];
-            widget.onFilterChanged();
-            Fluttertoast.showToast(
-              msg: "Filtre appliqué!",
-              textColor: themeController.isDark ? Colors.white : Colors.black,
-              webBgColor: themeController.isDark ? "#000" : "#fff",
-            );
-          }),
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: filterCategoryState[category.index] ? Colors.deepOrange : null,
-              border: filterCategoryState[category.index] ? null : BoxBorder.all(width: 1, color: Colors.deepOrange),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Text(category.label, style: TextStyle(color: filterCategoryState[category.index] ? Colors.white : null)),
-          ),
-        )
-      ).toList(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: SizedBox(
+        width: MediaQueryController.w(context, 100),
+        child: Row(
+          mainAxisAlignment: MediaQueryController.screenWidth(context) <= 450 ? MainAxisAlignment.spaceBetween : MainAxisAlignment.spaceEvenly,
+          children: RecipeCategorie.values.map((category) =>
+            GestureDetector(
+              onTap: () => setState(() {
+                filterCategoryState[category.index] = !filterCategoryState[category.index];
+                widget.onFilterChanged();
+                Fluttertoast.showToast(
+                  msg: "Filtre appliqué!",
+                  textColor: themeController.isDark ? Colors.white : Colors.black,
+                  webBgColor: themeController.isDark ? "#000" : "#fff",
+                );
+              }),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                decoration: BoxDecoration(
+                  color: filterCategoryState[category.index] ? Colors.deepOrange : null,
+                  border: filterCategoryState[category.index] ? null : BoxBorder.all(width: 1, color: Colors.deepOrange),
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Text(category.label, style: TextStyle(color: filterCategoryState[category.index] ? Colors.white : null)),
+              ),
+            )
+          ).toList(),
+        ),
+      ),
     );
   }
 }
