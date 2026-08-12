@@ -34,7 +34,14 @@ L'app est entièrement responsive et se présente bien sur tous types d'écran (
 ![Vue Desktop](assets/screenshots/desktop_preview.PNG)
 
 ## Vues Mobile
+1. Page d'accueil (listing/Filtrage/Recherche)
 ![Page d'accueil](assets/screenshots/home_page.PNG)
+
+2. Page des recettes favorites
 ![Page des recettes favorites](assets/screenshots/favorite_page.PNG)
+
+3. Page de détails des recettes (Ingredients/Temps de cuisson/Temperature de cuisson/...)
 ![Page de détails des recettes](assets/screenshots/details_page.PNG)
+
+4. Page d'ajout d'une nouvelle recette
 ![Page d'ajout d'une nouvelle recette](assets/screenshots/new_recipe_page.PNG)
