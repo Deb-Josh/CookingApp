@@ -14,8 +14,11 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: "/details/:id",
       builder: (context, state) {
-        final id = int.parse(state.pathParameters["id"]!);
-        return DetailScreen(idRecipe: id);
+        if(state.pathParameters["id"] != null){
+          final id = int.parse(state.pathParameters["id"]!);
+          return DetailScreen(idRecipe: id);
+        }
+        return HomeScreen();
       },
     ),
     GoRoute(
