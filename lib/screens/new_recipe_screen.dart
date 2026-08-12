@@ -2,10 +2,12 @@ import 'package:cooking/extensions/string_extension.dart';
 import 'package:cooking/models/ingredient_proportion.dart';
 import 'package:cooking/models/media_query_controller.dart';
 import 'package:cooking/models/recipe.dart';
+import 'package:cooking/models/theme_controller.dart';
 import 'package:cooking/widgets/change_theme_button.dart';
 import 'package:cooking/widgets/ingredient_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
 
 class NewRecipeScreen extends StatefulWidget {
@@ -32,6 +34,7 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
     IngredientWidget(indexIngredient: 0),
   ];
 
+  // Réinitialisation du formulaire
   void _resetForm(){
     _formKey.currentState?.reset();
     setState((){
@@ -39,6 +42,51 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
       _categorie = RecipeCategorie.main;
       _host = 4;
     });
+  }
+
+  // Soumission du formulaire
+  void _submitForm(){
+    // Verifier si tous les champs sont validés
+    if(_formKey.currentState!.validate()){
+
+      // récuperer et sauvegarder les valuers des champs des ingrédients
+      for (var i = 0; i < Ingredient.values.length; i++) {
+        Ingredient? ingredient = IngredientWidget.ingredientList[i];
+        double? quantity = IngredientWidget.quantities[i];
+        if(ingredient != null && quantity != null){
+          _ingredients.add(
+            IngredientProportion(ingredient, quantity)
+          );
+        }
+      }
+
+      // Sauvegarde toutes les autres valeurs des champs du formulaire
+      _formKey.currentState!.save();
+
+      // Création de la nouvelle recette
+      Recipe newRecipe = Recipe(
+        name: _name!,
+        pathImage: _pathImage,
+        origine: _origine!,
+        categorie: _categorie,
+        host: _host,
+        ingredients: _ingredients,
+        temperature: _temperature!,
+        cookingTime: _cookingTime!
+      );
+      // Ajout de la nouvelle recette
+      Recipe.recettes.add(newRecipe);
+
+      // Notifier de la creation et de l'ajout de la nouvelle recette
+      Fluttertoast.showToast(
+        msg: "Nouvelle recette ajoutée!",
+        timeInSecForIosWeb: 3,
+        textColor: themeController.isDark ? Colors.white : Colors.black,
+        webBgColor: themeController.isDark ? "#000" : "#fff",
+      );
+      // retour a home_screen où sont listées les recettes 
+      context.go("/");
+    }
   }
 
   @override
@@ -239,37 +287,7 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
                           child: const Text("Effacer"),
                         ),
                         FilledButton(
-                          onPressed: (){
-                            if(_formKey.currentState!.validate()){
-
-                              for (var i = 0; i < Ingredient.values.length; i++) {
-                                Ingredient? ingredient = IngredientWidget.ingredientList[i];
-                                double? quantity = IngredientWidget.quantities[i];
-                                if(ingredient != null && quantity != null){
-                                  _ingredients.add(
-                                    IngredientProportion(ingredient, quantity)
-                                  );
-                                }
-                              }
-
-                              _formKey.currentState!.save();
-            
-                              Recipe newRecipe = Recipe(
-                                name: _name!,
-                                pathImage: _pathImage,
-                                origine: _origine!,
-                                categorie: _categorie,
-                                host: _host,
-                                ingredients: _ingredients,
-                                temperature: _temperature!,
-                                cookingTime: _cookingTime!
-                              );
-                              Recipe.recettes.add(newRecipe);
-            
-                              // retour a la home page 
-                              context.go("/");
-                            }
-                          },
+                          onPressed: _submitForm,
                           child: const Text("Ajouter la recette"),
                         )
                       ],
