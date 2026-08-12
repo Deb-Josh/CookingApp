@@ -29,8 +29,8 @@ class NavBarCustom extends StatelessWidget {
           label: "Toutes les recettes",
         ),
         BottomNavigationBarItem(
-          icon: const Icon(Icons.favorite_outline),
-          activeIcon: const Icon(Icons.favorite),
+          icon: const Icon(Icons.star_outline),
+          activeIcon: const Icon(Icons.star),
           label: "Mes recettes favorites",
         ),
       ],

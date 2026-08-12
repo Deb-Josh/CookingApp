@@ -6,11 +6,14 @@ import 'package:cooking/models/recipe.dart';
 import 'package:cooking/models/theme_controller.dart';
 import 'package:cooking/widgets/change_theme_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key,required this.idRecipe});
 
   final int idRecipe;
+
+  static String fromRoute = "/";
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -26,6 +29,10 @@ class _DetailScreenState extends State<DetailScreen> {
         title: Text(recette.name),
         centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => context.go(DetailScreen.fromRoute),
+        ),
         actions: [
           const ChangeThemeButton(),
         ],

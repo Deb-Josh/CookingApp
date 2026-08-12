@@ -16,7 +16,7 @@ class DrawerCustom extends StatelessWidget {
           ),
           ListTile(
             title: const Text("Mes recettes favorites"),
-            leading: Icon(Icons.favorite),
+            leading: Icon(Icons.star),
             onTap: () => context.go("/favorite"),
           )
         ]

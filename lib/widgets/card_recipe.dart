@@ -1,12 +1,14 @@
 import 'package:cooking/models/media_query_controller.dart';
 import 'package:cooking/models/recipe.dart';
+import 'package:cooking/screens/detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CardRecipe extends StatefulWidget {
-  const CardRecipe({super.key, required this.recipe, this.onFavoriteChanged});
+  const CardRecipe({super.key, required this.recipe, required this.fromRoute, this.onFavoriteChanged});
 
   final Recipe recipe;
+  final String fromRoute;
   final VoidCallback? onFavoriteChanged;
 
   @override
@@ -20,7 +22,10 @@ class _CardRecipeState extends State<CardRecipe> {
     int idRecipe = Recipe.recettes.indexOf(recette);
     
     return GestureDetector(
-      onTap: () => context.push("/details/$idRecipe"),
+      onTap: (){
+        DetailScreen.fromRoute = widget.fromRoute;
+        context.go("/details/$idRecipe");
+      },
       child: Card(
         margin: EdgeInsets.only(bottom: 5),
         elevation: 2,

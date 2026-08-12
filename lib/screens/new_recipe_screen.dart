@@ -50,6 +50,10 @@ class _NewRecipeScreenState extends State<NewRecipeScreen> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,actions: [
           const ChangeThemeButton(),
         ],
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () => context.go("/"),
+        ),
       ),
 
       body: SingleChildScrollView( // SingleChildScrollView

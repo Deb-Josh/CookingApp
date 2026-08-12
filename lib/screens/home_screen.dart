@@ -15,14 +15,8 @@ class HomeScreen extends StatefulWidget {
 
   static bool showSearchBar = true;
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-
   // appliquer le filtre selon l'origine de la recette
-  bool applyOrigineFilter(Recipe recette){
+  static bool applyOrigineFilter(Recipe recette){
     for (int i = 0; i < FilterByRecipeOrigine.filterOrigineState.length; i++) {
       bool enableFilter = FilterByRecipeOrigine.filterOrigineState[i];
       if(enableFilter){
@@ -33,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   
   // appliquer le filtre selon la categorie de la recette
-  bool applyCategoryFilter(Recipe recette){
+  static bool applyCategoryFilter(Recipe recette){
     for (int i = 0; i < FilterByRecipeCategory.filterCategoryState.length; i++) {
       bool? enableFilter = FilterByRecipeCategory.filterCategoryState[i];
       if(enableFilter){
@@ -44,14 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // appliquer la recherche de recette
-  bool applySearchRecipe(Recipe recette){
+  static bool applySearchRecipe(Recipe recette){
     String? searchedRecipe = SearchBarRecipe.searchedRecipe;
     return (searchedRecipe == null || searchedRecipe.isEmpty) ? true : recette.name.toLowerCase().contains(searchedRecipe.toLowerCase());
   }
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
-    final filteredAndSearchedRecipes = Recipe.recettes.where((recette) => applyOrigineFilter(recette) && applyCategoryFilter(recette) && applySearchRecipe(recette)).toList();
+    final filteredAndSearchedRecipes = Recipe.recettes.where((recette) => HomeScreen.applyOrigineFilter(recette) && HomeScreen.applyCategoryFilter(recette) && HomeScreen.applySearchRecipe(recette)).toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       floatingActionButton: ElevatedButton.icon(
-        onPressed: () => context.push("/new-recipe"),
+        onPressed: () => context.go("/new-recipe"),
         icon: Icon(Icons.add),
         label: const Text("Nouvelle recette"),
       ),
@@ -106,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Liste des recettes
                 Column(
                   spacing: 3,
-                  children: filteredAndSearchedRecipes.isNotEmpty ? filteredAndSearchedRecipes.map((recette) => CardRecipe(recipe: recette),
+                  children: filteredAndSearchedRecipes.isNotEmpty ? filteredAndSearchedRecipes.map((recette) => CardRecipe(recipe: recette, fromRoute: "/"),
                   ).toList() : [
                     Padding(
                       padding: EdgeInsetsGeometry.only(top: 20),

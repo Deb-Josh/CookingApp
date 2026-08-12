@@ -41,7 +41,6 @@ class Recipe{
       ],
       temperature: 5,
       cookingTime: 15,
-      favorite: true,
     ),
     Recipe(
       name: "Gateau au chocolat",

@@ -44,7 +44,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               spacing: 3,
               children: [
                 ...favoritesRecipes.map((recette) => 
-                  CardRecipe(recipe: recette, onFavoriteChanged: () => setState((){})),
+                  CardRecipe(recipe: recette, fromRoute: "/favorite", onFavoriteChanged: () => setState((){})),
                 ),
                 favoritesRecipes.isEmpty ?
                 Column(
