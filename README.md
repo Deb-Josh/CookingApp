@@ -9,6 +9,10 @@ Application Flutter de recettes de cuisine
 - Se positionner à la racine du projet
 - Taper la commande : `flutter run -d <id_appareil>`
 
+# Lancement des tests
+- Se positionner à la racine du projet
+- Taper la commande : `flutter test -r expanded`
+
 # Fonctionnalités implémentées
 - Listing des recettes de cuisine
 - Possibilité de filtrer les recettes selon leur origine ou encore leur catégorie
@@ -17,8 +21,14 @@ Application Flutter de recettes de cuisine
 - Ajouter tes propres recettes de façon personnalisée
 - Gestion du thème de l'application en mode clair ou sombre
 
+# Dépendances utilisées
+- ***cupertino_icons*** : Pour la police des icones sur Apple pour le style IOS
+- ***go_router*** : Utiliser pour la gestion de la navigation et du routing
+- ***provider*** : Gestion de l'etat de l'app entre les differents ecrans (State Managment basique)
+- ***fluttertoast*** : a permi l'integration des toast modernes
+
 # Aperçu de l'application
-L'app est entièrement responsive et se présente bien sur tous types d'écran
+L'app est entièrement responsive et se présente bien sur tous types d'écran (Mobile, Tablet et Desktop)
 
 ## Vue Desktop
 ![Vue Desktop](assets/screenshots/desktop_preview.PNG)
